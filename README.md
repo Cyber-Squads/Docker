@@ -132,3 +132,40 @@ touch file.txt
 
 
 * docker volume rm [volume_name]
+
+
+--------------------------------------------------Docker Swarm---------------------------------
+
+Stack - combination of one or more services, networks, vols
+Services - combination of one or more tasks
+Tasks - task is a definition to deploy a container
+Container - container is an instance of task
+
+docker swarm init --advertise-addr ip-address-of-manager
+docker swarm join -token SWMTKN-1 xxxxx
+docker node ls
+
+docker service create --name helloworld alpine ping docker.com
+docker service ls
+docker stack deploy -c docker-compose.yml mern_stack
+docker stack ls
+docker stack services mern_stack
+docker stack ps mern_stack
+docker stack rm mern_stack
+
+docker network ls
+docker network create -d overlay network1
+docker network rm network1
+
+docker stats
+docker service logs service_name
+
+docker swarm leave
+docker node rm node name
+docker swarm leave --force - removes master
+
+To install swarmpit - ui for swarm
+docker run -it --rm \
+  --name swarmpit-installer \
+  --volume /var/run/docker.sock:/var/run/docker.sock \
+swarmpit/install:1.9
